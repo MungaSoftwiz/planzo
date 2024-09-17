@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 # import dj_database_url
 import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +28,7 @@ SECRET_KEY = 'django-insecure-s+0153*#^!(f75^nnea^atd8%xs*n@hga4mpqc96@8cvy=p_xx
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', 'localhost']
 
 # Add the CSRF_TRUSTED_ORIGINS setting
 CSRF_TRUSTED_ORIGINS = [
@@ -155,20 +156,18 @@ LOGOUT_REDIRECT_URL = 'home:home'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+# Email settings for Django admin users 
 
-# configuration For Sending Email with SMTP
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = ''   
-EMAIL_HOST_PASSWORD = ''  # app password for ''
-DEFAULT_FROM_EMAIL = ''
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')  # Load from .env
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')  # Load from .env
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
 
 
 
 # Append slash setting
 APPEND_SLASH = False
-
-STRIPE_PUBLIC_KEY = ''
-STRIPE_SECRET_KEY = ''

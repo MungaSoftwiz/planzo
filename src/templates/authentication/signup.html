@@ -16,136 +16,94 @@
     {% load widget_tweaks %} 
 </head>
 <style>
-    .parentDiv {
-        position: relative;
-        height: 100%;
-        width: 100%;
-        overflow: hidden;
-        background-color: #e8e8e8;
-        font-family: 'Raleway', sans-serif;
-    }
+body {
+    font-family: "Raleway", sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+  }
 
-    .childCard{
-        position: absolute;
-        top: 13%;
-        left: 35%;
-        width: 400px;
-        height: 440px;
-        border-radius: 4px;
-        background: #ffffff;
-        padding: 30px 0px 0px 70px;
-        box-shadow: 20px 20px 60px #bebebe,-20px -20px 60px #ffffff;
-    }
+  .parentDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
 
-    .cardTitle {
-        font-size: 22px;
-        font-weight: 600;
-        color: #000000;
-        margin: 0px 0px 20px 39px;
-    }
+  .childCard {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 400px;
+    text-align: center;
+  }
 
-    .userInputRoleDiv { 
-        outline: none;
-        width: 250px;
-        margin-bottom: 20px;
-    }
+  .cardTitle {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
 
-    .userInputRoleDiv{ 
-        width: 100px !important;
-        border-radius: 5px !important;
-    }
+  /* Input Label */
+  .inputLabel {
+    display: block;
+    text-align: left;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+  }
 
-    .userInputDiv input{ 
-        outline: none;
-        width: 250px;
-        height: 35px;
-        color: #000000;
-        font-size: 13.5px;
-        border-radius: 4px;
-        padding:2px 10px 2px;
-        margin: 0px 0px 20px 0px;
-        transition: .5s linear;
-        border: 2px solid #BDBDBD;
-        background-color: #F5F5F5;
-    }
+  /* Input Div Styling */
+  .userInputDiv,
+  .userInputRoleDiv {
+    margin-bottom: 20px;
+  }
 
-    .userInputDiv input:focus {
-        color: #000000;
-        font-size: 13.5px;
-        caret-color: #4DB6AC;
-        border: 2px solid #4DB6AC;
-        background-color: #ffffff;
-        box-shadow: 4px 4px 10px #ffffff;
-    }
+  /* Border Under Input */
+  .border {
+    display: block;
+    height: 1px;
+    background-color: #000;
+    margin-top: 2px;
+  }
 
-    .userInputDiv input:focus::placeholder { color: #000000; }
+  /* Button Styling */
+  .loginBtn {
+    background-color: #f39c12;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+  }
 
-    .loginBtn{
-        display: flex;
-        border: 0;
-        gap: 0.6em;
-        width: 250px;
-        height: 35px;
-        border-radius: 5px;
-        margin: 5px 0px 20px 0px;
-        padding: 0px 0px 0px 100px;
-        cursor: pointer;
-        font-weight: bold;
-        align-items: center;
-        box-sizing: border-box;
-        --primary-color: #26A69A;
-        --secondary-color: #fff;
-        --hover-color: #111;
-        --arrow-width: 10px;
-        --arrow-stroke: 2px;
-        transition: 0.2s background;
-        background: var(--primary-color);
-        color: var(--secondary-color);
-    }
+  /* Arrow Button */
+  .loginBtn .arrow-wrapper {
+    display: inline-block;
+    margin-left: 10px;
+  }
 
-    .loginBtn arrow-wrapper {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+  .loginBtn .arrow {
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+  }
 
-    .loginBtn .arrow {
-    margin-top: 1px;
-    width: var(--arrow-width);
-    background: var(--primary-color);
-    height: var(--arrow-stroke);
-    position: relative;
-    transition: 0.2s;
-    }
+  /* Link Styling */
+  .link {
+    display: block;
+    margin-top: 10px;
+    color: #f39c12;
+    text-decoration: none;
+  }
 
-    .loginBtn .arrow::before {
-        top: -3px;
-        right: 3px;
-        content: "";
-        padding: 3px;
-        transition: 0.2s;
-        box-sizing: border-box;
-        position: absolute;
-        border: solid var(--secondary-color);
-        border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
-        display: inline-block;
-        transform: rotate(-45deg);
-    }
-
-    .loginBtn:hover { background-color: var(--hover-color); }
-    .loginBtn:hover .arrow { background: var(--secondary-color); }
-    .loginBtn:hover .arrow:before { right: 0; }
-
-    .link{
-        color: #000000 !important;
-        font-size: 16px;
-        margin: 0px 0px 0px 30px;
-    }
-
-    .link:hover {
-        color: #000000 !imadmin/logout/portant;
-        text-decoration: underline;
-    }
+  .link:hover {
+    text-decoration: underline;
+  }
 </style>
 {% block content %}
 <div class="parentDiv">

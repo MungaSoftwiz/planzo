@@ -155,91 +155,90 @@ footer {
 }
 
 body {
-  font-family: "Raleway", sans-serif;
-  background-color: #f9f9f9;
-  margin: 0;
-  padding: 0;
-}
+    font-family: "Raleway", sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+  }
 
-.parentDiv {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
+  .parentDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
 
-.childCard {
-  background-color: #fff;
-  padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  width: 400px;
-  text-align: center;
-}
+  .childCard {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 400px;
+    text-align: center;
+  }
 
-.cardTitle {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
+  .cardTitle {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
 
-/* Input Label */
-.inputLabel {
-  display: block;
-  text-align: left;
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 5px;
-}
+  /* Input Label */
+  .inputLabel {
+    display: block;
+    text-align: left;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+  }
 
-/* Input Div Styling */
-.userInputDiv,
-.userInputRoleDiv {
-  margin-bottom: 20px;
-}
+  /* Input Div Styling */
+  .userInputDiv,
+  .userInputRoleDiv {
+    margin-bottom: 20px;
+  }
 
-/* Border Under Input */
-.border {
-  display: block;
-  height: 1px;
-  background-color: #000;
-  margin-top: 2px;
-}
+  /* Border Under Input */
+  .border {
+    display: block;
+    height: 1px;
+    background-color: #000;
+    margin-top: 2px;
+  }
 
-/* Button Styling */
-.loginBtn {
-  background-color: #f39c12;
-  color: white;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  border-radius: 5px;
-}
+  /* Button Styling */
+  .loginBtn {
+    background-color: #f39c12;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+  }
 
-/* Arrow Button */
-.loginBtn .arrow-wrapper {
-  display: inline-block;
-  margin-left: 10px;
-}
+  /* Arrow Button */
+  .loginBtn .arrow-wrapper {
+    display: inline-block;
+    margin-left: 10px;
+  }
 
-.loginBtn .arrow {
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  display: inline-block;
-  padding: 3px;
-  transform: rotate(45deg);
-}
+  .loginBtn .arrow {
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+  }
 
-/* Link Styling */
-.link {
-  display: block;
-  margin-top: 10px;
-  color: #4ca0af80;
-  text-decoration: none;
-}
+  /* Link Styling */
+  .link {
+    display: block;
+    margin-top: 10px;
+    color: #f39c12;
+    text-decoration: none;
+  }
 
-.link:hover {
-  text-decoration: underline;
-}
-
+  .link:hover {
+    text-decoration: underline;
+  }
