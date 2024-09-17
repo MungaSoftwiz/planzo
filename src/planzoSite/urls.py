@@ -53,6 +53,7 @@ urlpatterns = [
     path('accounts/signup/', signUpView, name='signup'),
 
     path('accounts/', include('django.contrib.auth.urls')),
+    path('events/', include('events.urls')),
 ]
 
 # url patterns for events"
