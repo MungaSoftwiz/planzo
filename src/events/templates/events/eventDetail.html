@@ -139,10 +139,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href={% static "styles/styles.css" %} />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href={% static "styles/styles.css" %} />
+  <script src="https://js.stripe.com/v3"></script>
+  <meta name="csrf-token" content="{{ csrf_token }}">
 </head>
 <body>
     {% block content %}
@@ -179,35 +181,68 @@
           <button class="ui secondary button" type="submit">Book</button>
         </div>
       </form>
+      <section>
+        <div class="product">
+          <img src="https://i.imgur.com/EHyR2nP.png" alt="The cover of Stubborn Attachments" />
+          <div class="description">
+            <h3>Stubborn Attachments</h3>
+            <h5>$20.00</h5>
+          </div>
+        </div>
+        <form action="/create-checkout-session" id="eventDetailForm" method="POST">
+          <button type="submit" id="checkout-button">Checkout</button>
+        </form>
+      </section>
     </div>
     {% endblock content %}
     {% block scripts %}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <script src="https://js.stripe.com/v3"></script>
     <script>
       $(document).ready(function() {
+        var stripe = Stripe("pk_test_51PyvQuKARWCwtdSpglqOotTQWLPxxNxXkj3TaFTrDbM9tw3TvVPNJ5hiBvhRuKSolOuyFzxd1K3FkGuNDuaoW6CE00BWkodu3D");
+    
         $('#eventDetailsBookBtn').click(function() {
           $('.ui.modal').modal('show');
         });
-  
+    
         $('#eventDetailForm').submit(function(e) {
-          e.preventDefault(); 
-          var formData = $(this).serialize();
-  
-          $.ajax({
-            type: 'POST',
-            url : "{% url 'home:eventDetail' event.id %}",
-            data: formData,
-            success: function(response) {
-              console.log('Form submitted successfully', response);
-              $('#eventDetailsMessage').show();
-              setTimeout(function() { $('#eventDetailsMessage').fadeOut('slow'); }, 5000);
+          e.preventDefault();  // Prevent default form submission
+    
+          var csrfToken = $('meta[name="csrf-token"]').attr('content');
+    
+          // Make a POST request to create a checkout session
+          fetch("{% url 'home:CreateCheckoutSession' %}", {
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken': csrfToken,  // Include CSRF token for security
             },
-            error: function(error) {
-              console.error('Error submitting form', error);
+            body: JSON.stringify({})  // Adjust if you need to send data
+          })
+          .then(function(response) {
+            return response.json();  // Parse the JSON response
+          })
+          .then(function(session) {
+            console.log("Stripe session response:", session);  // Log the session for debugging
+    
+            if (session.id) {
+              // Redirect to Stripe checkout page with the session ID
+              return stripe.redirectToCheckout({ sessionId: session.id });
+            } else {
+              console.error("Session ID not returned");
             }
+          })
+          .then(function(result) {
+            if (result.error) {
+              alert(result.error.message);
+            }
+          })
+          .catch(function(error) {
+            console.error("Error during fetch:", error);
           });
-  
+    
           $('.ui.modal').modal('hide');
         });
       });

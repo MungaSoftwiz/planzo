@@ -17,5 +17,5 @@ class EventEditForm(forms.ModelForm): # EventEditForm required
         widgets = {
             'description': forms.Textarea(attrs={'class': 'form-control'}), # Bootstrap CSS class form-control to style it
             'date'       :forms.TextInput(attrs={'type':'datetime-local'}),
-        }       
+        } 
         
